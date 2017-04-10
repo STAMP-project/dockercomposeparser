@@ -1,0 +1,42 @@
+version: "3"
+services:
+  web:
+    image: web
+    labels:
+      com.example.description: "This label will appear on all containers for the web service"
+      com.example.description1: "This label will appear on all containers for the web service"
+
+  interlock:
+  
+    #build: ./dir
+    
+    build:
+      context: ./dir
+      dockerfile: Dockerfile-alternate
+      args:
+        buildno: 1
+  
+    image: ehazlett/interlock:latest
+    ports:
+        - "80:80"
+    volumes:
+        - /var/lib/docker:/etc/docker
+    command: "--swarm-url tcp://<SWARM_MASTER_IP>:3375 --debug --plugin haproxy start"
+  
+  postgres:
+      image: postgres
+      ports:
+          - "5432:5432"
+      environment:
+          - POSTGRES_PASSWORD=123456789abc
+          - POSTGRES_USER=TODOApp
+          - POSTGRES_DB=jhipster
+  
+  service:
+      image: nemomen/taa
+      expose:
+          - "8080"
+      links:
+          - postgres
+      #environment:
+     # - VIRTUAL_HOST=org.istic.taa.totoapp.service

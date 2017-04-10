@@ -1,0 +1,46 @@
+version: '2'
+
+services:
+  web:
+    build: ./web
+    networks:
+      - new
+
+  worker:
+    build: ./worker
+    networks:
+    - legacy
+
+  db:
+    image: mysql
+    networks:
+      new:
+        aliases:
+          - database
+      legacy:
+        aliases:
+          - mysql
+
+
+secrets:
+  my_first_secret:
+    file: ./secret_data
+  my_second_secret:
+    external: true
+    
+    
+volumes:
+  data:
+    external:
+      name: actual-name-of-volume
+      
+networks:
+  outside:
+    driver: overlay
+    driver_opts:
+        foo: "bar"
+        baz: 1
+    external:
+      name: actual-name-of-network 
+  inside:
+    external: true 
