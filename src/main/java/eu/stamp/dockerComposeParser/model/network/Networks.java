@@ -1,30 +1,30 @@
 package eu.stamp.dockerComposeParser.model.network;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
+
+import eu.stamp.dockerComposeParser.model.volume.VolumeDescription;
 
 public class Networks {
 
-	private List<String> nameList = new ArrayList<String>();
-	private List<NetworkDescription> networks = new ArrayList<NetworkDescription>();
+	private Map<String,NetworkDescription> networks = new HashMap<String,NetworkDescription>();
 
 	
-	public List<NetworkDescription> getNetworks() {
-		return networks;
-	}
-
-
-	public void setNetworks(List<NetworkDescription> networks) {
-		this.networks = networks;
-	}
 
 
 	@JsonAnySetter
 	public void setDynamicNetwork(String name, NetworkDescription s) {
-		nameList.add(name);
-		networks.add(s);
+		networks.put(name,s);
 	}
+
+	@JsonAnyGetter
+	public Map<String,NetworkDescription> getDynamicNetwork() {
+		return networks;
+	}
+
 	
 }

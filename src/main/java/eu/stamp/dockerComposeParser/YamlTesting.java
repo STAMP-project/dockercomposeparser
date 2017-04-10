@@ -19,7 +19,7 @@ public class YamlTesting {
 //        mapper.setSerializationInclusion(Include.NON_EMPTY);
         try {
             Architecture a = mapper.readValue(new File("test3.yml"), Architecture.class);
-            System.err.println(a.getServices().getServices().get(0).getImage());
+           // System.err.println(a.getServices().getService().get(0).getImage());
             System.out.println(ReflectionToStringBuilder.toString(a,ToStringStyle.MULTI_LINE_STYLE));
             
             mapper.writeValue(System.out, a);

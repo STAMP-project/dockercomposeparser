@@ -1,33 +1,26 @@
 package eu.stamp.dockerComposeParser.model.secret;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Secrets {
 
-	private List<String> nameList = new ArrayList<String>();
-	private List<SecretDescription> secrets = new ArrayList<SecretDescription>();
+	private Map<String,SecretDescription> secrets = new HashMap<String,SecretDescription>();
 
-	public List<SecretDescription> getSecrets() {
-		return secrets;
-	}
-
-	public void setSecrets(List<SecretDescription> secrets) {
-		this.secrets = secrets;
-	}
-
-	@JsonIgnore
-	public List<String> getNameList() {
-		return nameList;
-	}
 
 	@JsonAnySetter
 	public void setDynamicVolume(String name, SecretDescription s) {
-		nameList.add(name);
-		secrets.add(s);
+		
+		secrets.put(name,s);
+	}
+	
+	@JsonAnyGetter
+	public Map<String,SecretDescription> getDynamicVolume() {
+		
+		return secrets;
 	}
 
 }
