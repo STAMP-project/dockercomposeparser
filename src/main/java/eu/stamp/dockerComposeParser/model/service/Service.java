@@ -20,12 +20,6 @@ public class Service {
 	Build build;
 	Map<String,String> environements = new HashMap<String, String>();
 	List<Network> networks;
-	public List<Network> getNetworks() {
-		return networks;
-	}
-	public void setNetworks(List<Network> networks) {
-		this.networks = networks;
-	}
 	String network_mode;
 	Deploy deploy;
 	List<String> depends_on;
@@ -187,6 +181,12 @@ public class Service {
 	}
 	public void setIsolation(IsolationMode isolation) {
 		this.isolation = isolation;
+	}
+	public List<Network> getNetworks() {
+		return networks;
+	}
+	public void setNetworks(List<Network> networks) {
+		this.networks = networks;
 	}
 
 
