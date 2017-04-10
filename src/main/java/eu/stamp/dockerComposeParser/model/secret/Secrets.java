@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Secrets {
 
@@ -18,6 +19,7 @@ public class Secrets {
 		this.secrets = secrets;
 	}
 
+	@JsonIgnore
 	public List<String> getNameList() {
 		return nameList;
 	}
