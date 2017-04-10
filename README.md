@@ -10,7 +10,7 @@ This project provides an initial parser and printer for docker compose file v3.
 Architecture a = new Parser().parse("docker-compose.yml");
 
 // Saving an architecture to an outputStream	
-new Printer().pring(a,System.out);
+new Printer().print(a,System.out);
 
 ```
 
