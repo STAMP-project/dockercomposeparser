@@ -8,13 +8,14 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator.Feature;
 
 import eu.stamp.dockerComposeParser.model.Architecture;
 
 
 public class YamlTesting {
     public static void main(String[] args) {
-        ObjectMapper mapper = new ObjectMapper(new YAMLFactory()).enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);;
+        ObjectMapper mapper = new ObjectMapper(new YAMLFactory().enable(Feature.MINIMIZE_QUOTES)).enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);;
         mapper.setSerializationInclusion(Include.NON_DEFAULT);
 //        mapper.setSerializationInclusion(Include.NON_EMPTY);
         try {

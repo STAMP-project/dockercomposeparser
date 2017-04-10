@@ -3,8 +3,11 @@ package eu.stamp.dockerComposeParser.model.network;
 public class External {
 	
 	public External() {
-		// TODO Auto-generated constructor stub
 	}
+	public External(boolean value) {
+		this.value = value;	
+	}
+
 	
 
 	boolean value =true;
@@ -22,9 +25,6 @@ public class External {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public External(boolean value) {
-		this.value = value;	
 	}
 	
 }
