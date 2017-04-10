@@ -34,6 +34,8 @@ public class Service {
 	List<String> extra_hosts;
 	Healthcheck healthcheck;
 	IsolationMode isolation;
+	Logging logging;
+	String pid;
 	
 
 	public List<String> getExternal_links() {
@@ -187,6 +189,18 @@ public class Service {
 	}
 	public void setNetworks(List<Network> networks) {
 		this.networks = networks;
+	}
+	public Logging getLogging() {
+		return logging;
+	}
+	public void setLogging(Logging logging) {
+		this.logging = logging;
+	}
+	public String getPid() {
+		return pid;
+	}
+	public void setPid(String pid) {
+		this.pid = pid;
 	}
 
 

@@ -8,6 +8,7 @@ public class Deploy {
 	Integer replicas;
     Config update_config;
     RestartPolicy restart_policy;
+    Resource resources;
     Placement placement;
     Mode mode;
     List<String> labels;
@@ -47,5 +48,11 @@ public class Deploy {
 	}
 	public void setLabels(List<String> labels) {
 		this.labels = labels;
+	}
+	public Resource getResources() {
+		return resources;
+	}
+	public void setResources(Resource resources) {
+		this.resources = resources;
 	}
 }
